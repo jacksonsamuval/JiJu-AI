@@ -1,0 +1,204 @@
+/* App container */
+.App {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  color: #333;
+}
+
+/* Tab navigation */
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: 1px solid #dbe3eb;
+  background-color: #ffffff;
+  color: #007bff;
+  font-weight: bold;
+  margin-bottom: 20px;
+  margin-right: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+button:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+/* Tab content */
+.tab-content {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Chat component styles */
+.output {
+  margin-top: 20px;
+  text-align: left;
+  background-color: #f4f4f4;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  max-width: 100%;
+  overflow-wrap: break-word;
+  font-size: 1rem;
+}
+
+/* Recipe text container */
+.recipe-text {
+  max-width: 100%;
+  padding: 15px;
+  word-wrap: break-word;
+  overflow-y: auto;
+  font-size: calc(12px + 0.5vw);
+  line-height: 1.6;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+/* Image grid layout */
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 15px;
+  margin-top: 20px;
+}
+
+img {
+  width: 100%;
+  height: auto;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+}
+
+.empty-image-slot {
+  width: 100%;
+  padding-bottom: 75%;
+  border: 2px dashed #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Input and button for ChatComponent */
+input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  width: calc(100% - 22px);
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+}
+
+input[type="text"]:focus {
+  border-color: #007bff;
+}
+
+button[type="submit"] {
+  padding: 10px 20px;
+  cursor: pointer;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Chat container styles */
+.chat-container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.chat-box {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 10px;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+}
+
+.chat-bubble {
+  padding: inherit;
+  margin: 10px 0;
+  border-radius: 10px;
+  max-width: fit-content;
+  word-wrap: break-word;
+  position: relative;
+  overflow: hidden;
+}
+
+.chat-bubble.user {
+  background-color: #dbe3eb;
+  color: #000000;
+  align-self: flex-end;
+  margin-left: auto;
+}
+
+.chat-bubble.ai {
+  background-color: #f1f1f1;
+  color: #333;
+  align-self: flex-start;
+}
+
+/* Added styles for long messages */
+.message-content {
+  max-height: 150px; /* Limits the height of the message box */
+  overflow-y: auto;  /* Adds a scroll bar if the content is too long */
+  padding-right: 10px; /* Spacing for scrollbar */
+}
+
+.message-content p {
+  margin: 0;
+}
+
+/* Clear History Button */
+.clear-history-btn {
+  padding: 10px 20px;
+  background-color: #ff4d4d;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.clear-history-btn:hover {
+  background-color: #e60000;
+}
