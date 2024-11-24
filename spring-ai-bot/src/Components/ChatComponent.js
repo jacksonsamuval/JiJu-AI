@@ -13,7 +13,7 @@ function ChatComponent() {
     setIsLoading(true);
     setChatResponse('');
     try {
-      const response = await fetch(`http://192.168.5.52:8080/?message=${prompt}`);
+      const response = await fetch(`http://localhost:8080/?message=${prompt}`);
       const data = await response.text();
       console.log(data);
       setChatResponse(data);

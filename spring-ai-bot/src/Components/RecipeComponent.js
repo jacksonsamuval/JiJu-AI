@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // Function to handle the API request
 const fetchChatResponse = async (items, quantity) => {
   try {
-    const response = await fetch(`http://192.168.5.52:8080/recipe?items=${items}&quantity=${quantity}`);
+    const response = await fetch(`http://localhost:8080/recipe?items=${items}&quantity=${quantity}`);
     const data = await response.text();
     return data;
   } catch (error) {
