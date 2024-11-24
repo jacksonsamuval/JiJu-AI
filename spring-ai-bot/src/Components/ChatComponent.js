@@ -13,7 +13,7 @@ function ChatComponent() {
     setIsLoading(true);
     setChatResponse('');
     try {
-      const response = await fetch(`http://localhost:8080/?message=${prompt}`);
+      const response = await fetch(`http://192.168.5.52:8080/?message=${prompt}`);
       const data = await response.text();
       console.log(data);
       setChatResponse(data);
@@ -39,6 +39,14 @@ function ChatComponent() {
     setChatHistory([]);  // Reset chat history to an empty array
   };
 
+  // Handle pressing Enter key
+  const handleKeyDown = (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();  // Prevent default Enter behavior (line break)
+      askAi();  // Trigger the message send
+    }
+  };
+
   return (
     <div className="chat-container">
       <h2 className="component-header">JiJu AI</h2>
@@ -48,6 +56,7 @@ function ChatComponent() {
           value={prompt}
           onChange={(e) => setPrompt(e.target.value)}
           placeholder="Ask me anything..."
+          onKeyDown={handleKeyDown}  // Add onKeyDown event
         />
         <button type="submit" onClick={askAi} disabled={isLoading}>
           {isLoading ? 'Loading...' : 'Send'}

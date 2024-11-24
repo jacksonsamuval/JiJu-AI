@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 // Function to handle the API request
-const fetchChatResponse = async (items, quantity) => {
+const fetchChatResponse = async (skills, experience) => {
   try {
-    const response = await fetch(`http://192.168.5.52:8080/recipe?items=${items}&quantity=${quantity}`);
+    const response = await fetch(`http://192.168.5.52:8080/careerCounselor?skills=${skills}&experience=${experience}`);
     const data = await response.text();
     return data;
   } catch (error) {
@@ -12,26 +12,26 @@ const fetchChatResponse = async (items, quantity) => {
   }
 };
 
-function RecipeComponent() {
-  const [items, setItems] = useState('');
-  const [quantity, setQuantity] = useState('');
+function CareerCounserlor() {
+  const [skills, setSkills] = useState('');
+  const [experience, setExperience] = useState('');
   const [chatResponse, setChatResponse] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [chatHistory, setChatHistory] = useState([]);
 
   const askAi = async () => {
-    if (!items.trim() || !quantity.trim()) {
-      alert("Please enter both items and quantity.");
+    if (!skills.trim() || !experience.trim()) {
+      alert("Please enter both Skills and Experience.");
       return;
     }
 
-    const prompt = `${items} - ${quantity}`;
+    const prompt = `${skills} - ${experience}`;
     setChatHistory([...chatHistory, { sender: 'user', message: prompt }]);
 
     setIsLoading(true);
     setChatResponse('');
     try {
-      const data = await fetchChatResponse(items, quantity);
+      const data = await fetchChatResponse(skills, experience);
       setChatResponse(data);
       setChatHistory((prevHistory) => [
         ...prevHistory,
@@ -55,31 +55,31 @@ function RecipeComponent() {
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
       askAi();
-      setItems('');
-      setQuantity(''); 
+      setSkills('');
+      setExperience('');
     }
   };
 
   return (
     <div className="chat-container">
-      <h2 className="component-header">Receipe Finder</h2>
+      <h2 className="component-header">Career Counserlor</h2>
       <div className="input-container">
         <input
           type="text"
-          value={items}
-          onChange={(e) => setItems(e.target.value)}
-          placeholder="Enter the Food you Need or The Incredeients you Have"
+          value={skills}
+          onChange={(e) => setSkills(e.target.value)}
+          placeholder="Enter Skills"
           onKeyDown={handleKeyDown} 
         />
         <input
           type="text"
-          value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
-          placeholder="Enter your Quantity of People"
+          value={experience}
+          onChange={(e) => setExperience(e.target.value)}
+          placeholder="Enter your Experience"
           onKeyDown={handleKeyDown} 
         />
         <button type="submit" onClick={askAi} disabled={isLoading}>
-          {isLoading ? 'Loading...' : 'Send'}
+          {isLoading ? 'Thinking...' : 'Send'}
         </button>
 
         <button onClick={clearChatHistory} className="clear-history-btn">
@@ -103,7 +103,6 @@ function RecipeComponent() {
 
 function ChatBubble({ sender, message }) {
   const formatMessage = (msg) => {
-    // Example: Replace newline characters with <br> elements
     return msg.split('\n').map((line, index) => (
       <span key={index}>
         {line}
@@ -121,4 +120,4 @@ function ChatBubble({ sender, message }) {
   );
 }
 
-export default RecipeComponent;
+export default CareerCounserlor;
